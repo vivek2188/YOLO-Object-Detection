@@ -37,7 +37,7 @@ def cfg_parser(cfg_file):
             key, value = line.split('=')
             block[key.rstrip()] = value.lstrip()
     blocks.append(block)
-    print(len(blocks))
+    #print(len(blocks))
     return blocks
 
 if __name__ == '__main__':
