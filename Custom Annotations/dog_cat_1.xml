@@ -1,0 +1,22 @@
+<annotation>
+  <folder>../Custom Images</folder>
+  <filename>dog_cat_1.jpg</filename>
+  <segmented>0</segmented>
+  <size>
+    <height>172</height>
+    <weight>292</weight>
+    <depth>3</depth>
+  </size>
+  <object>
+    <name>dogs</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+      <xmin>4.798387096774199</xmin>
+      <ymin>53.48596774193555</ymin>
+      <xmax>121.95161290322582</xmax>
+      <ymax>162.39725806451614</ymax>
+    </bndbox>
+  </object>
+</annotation>
