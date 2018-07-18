@@ -1,5 +1,11 @@
 import numpy as np
 
+def one_hot_encoder(label,label_length):
+    # label lies within the range of [0,label_length)
+    one_hot_vector = [0] * label_length
+    one_hot_vector[label] = 1
+    return one_hot_vector
+
 def convert_to_yolo(label,img_height,img_width,grid_size,n_classes):
     '''
     After parsing the annotations, we get the output of the following format:
