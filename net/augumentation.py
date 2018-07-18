@@ -1,10 +1,23 @@
+# Preparing the TARGET VARIABLES
+import os
+import cv2
 import numpy as np
+from PIL import Image
+from PIL import ImageDraw
+import matplotlib.pyplot as plt
 
 def one_hot_encoder(label,label_length):
     # label lies within the range of [0,label_length)
     one_hot_vector = [0] * label_length
     one_hot_vector[label] = 1
     return one_hot_vector
+
+def draw_rectangles(obj,rect_coords,line_width=1,color='red'):
+    # rect_coords = (X,Y)
+    coords = (rect_coords[0][0],rect_coords[0][1],rect_coords[1][0],rect_coords[1][1])
+    for i in range(line_width):
+        obj.rectangle(coords,outline=color)
+        coords = (coords[0]+1,coords[1]+1,coords[2]+1,coords[3]+1)
 
 def convert_to_yolo(label,img_height,img_width,grid_size,n_classes):
     '''
