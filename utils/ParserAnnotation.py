@@ -43,14 +43,14 @@ def get_img_info(file,lbls_dict):
     filename = root.find('filename').text.strip()
     size = root.find('size')
     height = int(size.find('height').text.strip())
-    weight = int(size.find('weight').text.strip())
+    width = int(size.find('width').text.strip())
     # Depth always = 3 : RGB
     objects = root.findall('object')
     bndbox = []
     for obj in objects:
         bbox = get_bounding_box(obj,lbls_dict)
         bndbox.append(bbox)
-    return (filename,height,weight,bndbox)
+    return (filename,height,width,bndbox)
 
 def get_data(annotations_folder,labels):
     '''
@@ -64,7 +64,7 @@ def get_data(annotations_folder,labels):
         fl = os.path.join(annotations_folder,file)
         img_info = get_img_info(fl,lbls_dict)
         train_data.append(img_info)
-    return train_data
+    return (train_xml, train_data)
 
 if __name__ == '__main__':
     last = os.path.join(annotations_folder,train_xml[-1])
