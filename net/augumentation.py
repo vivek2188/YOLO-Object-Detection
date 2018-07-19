@@ -1,10 +1,14 @@
 # Preparing the TARGET VARIABLES
 import os
 import cv2
+import sys
 import numpy as np
 from PIL import Image
 from PIL import ImageDraw
 import matplotlib.pyplot as plt
+
+sys.path.append('C:\\Users\\user\\YOLO-Object-Detection')
+from utils.ParserAnnotation import get_data
 
 def resize(image,img_size):
     img = cv2.imread(image.path)
@@ -68,3 +72,10 @@ def transform_labels(labels,img_height,img_width,grid_size,n_classes):
     for label in labels:
         yolo_output.append(convert_to_yolo(label,img_height,img_width,grid_size,n_classes))
     return yolo_output
+
+def create_distributor(annotations_folder,labels):
+    label_data = []
+    img_path_list = []
+    label_list = []
+    file_list, dataset = get_data(annotations_folder,labels)
+    return file_list[:3]
