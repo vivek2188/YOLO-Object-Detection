@@ -6,6 +6,17 @@ from PIL import Image
 from PIL import ImageDraw
 import matplotlib.pyplot as plt
 
+def resize(image,img_size):
+    img = cv2.imread(image.path)
+    img = cv2.cvtColor(img,cv2.COL0R_BGR2RGB)
+    h,w, _ = img.shape
+    if h*w < 416*416:
+        interpolation = cv2.INTER_LINEAR
+    else:
+        interpolation = cv2.INTER_AREA
+    img = cv2.resize(img,dsize=(img_size,img_size),interpolation=interpolation)
+    return img
+
 def one_hot_encoder(label,label_length):
     # label lies within the range of [0,label_length)
     one_hot_vector = [0] * label_length
